@@ -16,10 +16,10 @@ cabal-version:          >= 1.10
 library
   hs-source-dirs:       src
   exposed-modules:      HaskellWorks.Data.Parser
-  build-depends:        base                            >= 4.7  && < 5
+  build-depends:        base                          >= 4          && < 5
                       , attoparsec
                       , bytestring
-                      , hw-prim
+                      , hw-prim                       >= 0.0.1
                       , mono-traversable
                       , text
 
