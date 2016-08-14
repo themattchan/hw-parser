@@ -30,14 +30,14 @@ instance Parser ByteString where
   char = BC.char
   (<?>) = (BC.<?>)
   rational = BC.rational
-  {-# INLINABLE satisfy     #-}
-  {-# INLINABLE satisfyWith #-}
-  {-# INLINABLE satisfyChar #-}
-  {-# INLINABLE string      #-}
-  {-# INLINABLE try         #-}
-  {-# INLINABLE char        #-}
-  {-# INLINABLE (<?>)       #-}
-  {-# INLINABLE rational    #-}
+  {-# INLINE satisfy     #-}
+  {-# INLINE satisfyWith #-}
+  {-# INLINE satisfyChar #-}
+  {-# INLINE string      #-}
+  {-# INLINE try         #-}
+  {-# INLINE char        #-}
+  {-# INLINE (<?>)       #-}
+  {-# INLINE rational    #-}
 
 instance Parser Text where
   satisfy = AT.satisfy
@@ -48,11 +48,11 @@ instance Parser Text where
   char = AT.char
   (<?>) = (AT.<?>)
   rational = AT.rational
-  {-# INLINABLE satisfy     #-}
-  {-# INLINABLE satisfyWith #-}
-  {-# INLINABLE satisfyChar #-}
-  {-# INLINABLE string      #-}
-  {-# INLINABLE try         #-}
-  {-# INLINABLE char        #-}
-  {-# INLINABLE (<?>)       #-}
-  {-# INLINABLE rational    #-}
+  {-# INLINE satisfy     #-}
+  {-# INLINE satisfyWith #-}
+  {-# INLINE satisfyChar #-}
+  {-# INLINE string      #-}
+  {-# INLINE try         #-}
+  {-# INLINE char        #-}
+  {-# INLINE (<?>)       #-}
+  {-# INLINE rational    #-}
