@@ -3,7 +3,7 @@ version:                0.0.0.1
 synopsis:               Conduits for tokenizing streams.
 description:            Please see README.md
 homepage:               http://github.com/haskell-works/hw-parser#readme
-license:                BSD3
+license:                MIT
 license-file:           LICENSE
 author:                 John Ky
 maintainer:             newhoggy@gmail.com
@@ -19,7 +19,7 @@ library
   build-depends:        base                          >= 4          && < 5
                       , attoparsec
                       , bytestring
-                      , hw-prim                       >= 0.0.3
+                      , hw-prim                       >= 0.3.0.0
                       , mono-traversable
                       , text
 
