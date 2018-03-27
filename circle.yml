@@ -1,7 +1,7 @@
 version: 2.0
 jobs:
   build:
-    working_directory: ~/hw-parser
+    working_directory: ~/project
     docker:
       - image: quay.io/haskell_works/stack-build-cabal:2017-12-27
 
@@ -49,7 +49,7 @@ jobs:
       ##### Building library
       - restore_cache:
           keys:
-            - dot-stack-{{ checksum "stack.yaml" }}-{{ checksum "hw-parser.cabal" }}
+            - dot-stack-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
             - dot-stack-{{ checksum "stack.yaml" }}-build
             - dot-stack-{{ checksum "stack.yaml" }}-setup
 
@@ -74,7 +74,7 @@ jobs:
           command: stack --stack-yaml stack-ci.yaml build --test --no-run-tests
 
       - save_cache:
-          key: dot-stack-{{ checksum "stack.yaml" }}-{{ checksum "hw-parser.cabal" }}
+          key: dot-stack-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
           paths:
             - ~/.stack
       - save_cache:
@@ -84,7 +84,7 @@ jobs:
 
       - save_cache:
           key: dot-stack-work-{{ checksum "stack.yaml" }}
-          paths: ~/hw-parser/.stack-work
+          paths: ~/project/.stack-work
 
       ##### Running tests
       - run:

@@ -1,0 +1,27 @@
+name: hw-parser
+version: '0.0.0.3'
+synopsis: Simple parser support
+description: Please see README.md
+category: Data, Parser
+author: John Ky
+maintainer: newhoggy@gmail.com
+copyright: 2016 John Ky
+license: BSD3
+github: haskell-works/hw-parser
+homepage: http://github.com/haskell-works/hw-parser#readme
+extra-source-files:
+- README.md
+ghc-options:
+- -Wall
+- -msse4.2
+dependencies:
+- base >=4 && <5
+- attoparsec
+- bytestring
+- hw-prim >=0.4.0.0
+- mono-traversable
+- text
+library:
+  source-dirs: src
+  exposed-modules:
+  - HaskellWorks.Data.Parser
