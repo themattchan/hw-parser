@@ -1,19 +1,23 @@
+{-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses  #-}
+
 module HaskellWorks.Data.Parser
   ( Parser(..)
   ) where
 
-import qualified Data.Attoparsec.ByteString                as ABS
-import qualified Data.Attoparsec.ByteString.Char8          as BC
-import qualified Data.Attoparsec.Text                      as AT
-import qualified Data.Attoparsec.Types                     as T
-import           Data.ByteString                           (ByteString)
-import           Data.MonoTraversable
-import           Data.Text                                 (Text)
-import           HaskellWorks.Data.Char.IsChar
+import Data.ByteString               (ByteString)
+import Data.Text                     (Text)
+import Data.Word
+import HaskellWorks.Data.Char.IsChar
 
-class MonoTraversable t => Parser t where
-  satisfy :: (Element t -> Bool) -> T.Parser t (Element t)
-  satisfyWith :: (Element t -> a) -> (a -> Bool) -> T.Parser t a
+import qualified Data.Attoparsec.ByteString       as ABS
+import qualified Data.Attoparsec.ByteString.Char8 as BC
+import qualified Data.Attoparsec.Text             as AT
+import qualified Data.Attoparsec.Types            as T
+
+class Parser t e | t -> e where
+  satisfy :: (e -> Bool) -> T.Parser t e
+  satisfyWith :: (e -> a) -> (a -> Bool) -> T.Parser t a
   satisfyChar :: (Char -> Bool) -> T.Parser t Char
   string :: t -> T.Parser t t
   try :: T.Parser t a -> T.Parser t a
@@ -21,7 +25,7 @@ class MonoTraversable t => Parser t where
   (<?>) :: T.Parser t Char -> String -> T.Parser t Char
   rational :: Fractional f => T.Parser t f
 
-instance Parser ByteString where
+instance Parser ByteString Word8 where
   satisfy = ABS.satisfy
   satisfyWith = ABS.satisfyWith
   satisfyChar = ABS.satisfyWith toChar
@@ -39,7 +43,7 @@ instance Parser ByteString where
   {-# INLINE (<?>)       #-}
   {-# INLINE rational    #-}
 
-instance Parser Text where
+instance Parser Text Char where
   satisfy = AT.satisfy
   satisfyWith = AT.satisfyWith
   satisfyChar = AT.satisfyWith toChar
