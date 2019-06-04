@@ -10,7 +10,7 @@ bug-reports:    https://github.com/haskell-works/hw-parser/issues
 author:         John Ky
 maintainer:     newhoggy@gmail.com
 copyright:      2016 John Ky
-license:        BSD-3-Clause
+license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
 
